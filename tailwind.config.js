@@ -10,6 +10,9 @@ export default {
         './resources/**/*.vue',
     ],
     theme: {
+        colors: {
+            "logo": "#08841c",
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
