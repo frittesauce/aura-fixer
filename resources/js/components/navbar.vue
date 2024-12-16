@@ -45,34 +45,14 @@ export default {
 };
 </script>
 
-<style>
-.link:hover {
-  color: theme(colors.logo)
-}
 
-.nav-links {
-  display: flex;
-  justify-content: right;
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-links li {
-  cursor: pointer;
-  padding: 2rem 0;
-  position: relative;
-}
-
-
-.nav-links li.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: theme(colors.logo);
-}
-</style>
+<template>
+  <nav class=" absolute top-0 right-0 left-0 flex justify-center gap-x-4 z-50 bg-white">
+    <button @click="changePage('home')">
+      home
+    </button>
+    <button @click="changePage('map')">
+      map
+    </button>
+  </nav>
+</template>
