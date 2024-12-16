@@ -12,16 +12,24 @@ export default {
     }
   }
 }
+
+</script>
+
+<script setup>
+import Icon from "./icon.vue"
 </script>
 
 
 <template>
-  <nav class=" absolute top-0 right-0 left-0 flex justify-center gap-x-4 z-50 bg-white">
-    <button @click="changePage('home')">
-      home
-    </button>
-    <button @click="changePage('map')">
-      map
-    </button>
-  </nav>
+  <div class="flex gap-1 p-4">
+    <icon></icon>
+    <nav class="top-0 left-0 right-0 z-50 flex justify-center bg-white gap-x-4">
+      <button @click="changePage('home')">
+        home
+      </button>
+      <button @click="changePage('map')">
+        map
+      </button>
+    </nav>
+  </div>
 </template>
