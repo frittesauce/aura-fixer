@@ -16,7 +16,7 @@ export default {
 
 
 <template>
-  <nav class=" absolute top-0 right-0 left-0 flex justify-center gap-x-4 z-50 bg-white">
+  <nav class="flex justify-center gap-x-4  bg-white">
     <button @click="changePage('home')">
       home
     </button>
