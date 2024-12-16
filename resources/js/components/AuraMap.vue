@@ -5,16 +5,11 @@
 </template>
 
 <script>
-
 import L from 'leaflet';
 
 export default {
   name: 'AuraMap',
   mounted() {
-
-    let cords = ["51.93", "4.48"]
-
-
     // Initialize the map when the component is mounted
     const map = L.map('map').setView(cords, 20); // Initial coordinates [latitude, longitude], zoom level
 
@@ -23,17 +18,14 @@ export default {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> rizzer',
     }).addTo(map);
 
-    // Add a marker at the initial location
-    L.marker([51.505, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+
   }
 };
 </script>
 
 <style lang="css" scoped>
 #map {
-  height: 100dvh;
-  width: 100dvw;
-  z-index: -1;
+  height: 95dvh;
+  width: 99dvw;
 }
 </style>
