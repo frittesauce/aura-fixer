@@ -1,6 +1,27 @@
-<script setup>
+<script>
+export default {
+  props: {
+    page: {
+      type: String,
+      Required: true
+    }
+  },
+  methods: {
+    changePage(newPage) {
+      this.$emit("updatePage", newPage)
+    }
+  }
+}
 </script>
 
+
 <template>
-  <p>woof woof meow</p>
+  <nav>
+    <button @click="changePage('home')">
+      home
+    </button>
+    <button @click="changePage('map')">
+      map
+    </button>
+  </nav>
 </template>
