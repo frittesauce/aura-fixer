@@ -13,8 +13,10 @@
 
 </head>
 
+
+
 <body id="app">
-    <app />
+    <app :page="'{{ $page }}'">
 </body>
 
 </html>
