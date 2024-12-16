@@ -1,6 +1,6 @@
-<script>
-
+<script setup>
+import AuraMap from './AuraMap.vue';
 </script>
 <template>
-  <p>map</p>
+  <aura-map></aura-map>
 </template>
