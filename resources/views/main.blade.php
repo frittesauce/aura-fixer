@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>aura fixer - Give the city a proper winter arc!</title>
+
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+
 </head>
 
-<body>
-    <nav>
-        <a href="google">home</a>
-        <a href="google">not home</a>
-        <a href="google">hallo!</a>
-    </nav>
-
-    {{ $slot }}
-
+<body id="app">
+    <app />
 </body>
 
 </html>
