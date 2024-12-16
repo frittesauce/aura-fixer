@@ -6,24 +6,14 @@
 
 <script>
 
-let cords = ["0", "0"]
-
-function success(pos) {
-  cords = pos.coords;
-
-}
-
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-
 import L from 'leaflet';
 
 export default {
   name: 'AuraMap',
   mounted() {
 
-    navigator.geolocation.getCurrentPosition(success, error)
+    let cords = ["0", "0"]
+
 
     // Initialize the map when the component is mounted
     const map = L.map('map').setView([51.505, -0.09], 13); // Initial coordinates [latitude, longitude], zoom level
