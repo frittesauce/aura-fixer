@@ -18,7 +18,6 @@ function updatePage(newPage) {
     `/${newPage}`
   )
 }
-
 </script>
 
 <template>
