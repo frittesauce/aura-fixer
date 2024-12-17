@@ -13,7 +13,8 @@
 
 </head>
 
-<body id="app">
+
+<body id="app" >
     <app />
 </body>
 
