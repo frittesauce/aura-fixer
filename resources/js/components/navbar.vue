@@ -1,35 +1,78 @@
-<script>
-export default {
-  props: {
-    page: {
-      type: String,
-      Required: true
-    }
-  },
-  methods: {
-    changePage(newPage) {
-      this.$emit("updatePage", newPage)
-    }
-  }
-}
-
-</script>
-
-<script setup>
-import Icon from "./icon.vue"
-</script>
-
-
 <template>
-  <div class="flex gap-1 p-4">
-    <icon></icon>
-    <nav class="top-0 left-0 right-0 z-50 flex justify-center bg-white gap-x-4">
-      <button @click="changePage('home')">
-        home
-      </button>
-      <button @click="changePage('map')">
-        map
-      </button>
+  <div class="flex w-full px-6">
+    <div class="my-4">
+      <icon></icon>
+    </div>
+    <nav class="w-full navbar">
+      <ul class="h-full text-xl nav-links">
+        <li v-for="link in links" :key="link.name" :class="{ active: link.name === currentPage }" class="link"
+          @click="setActivePage(link.name)">
+          {{ link.name }}
+        </li>
+      </ul>
     </nav>
   </div>
 </template>
+
+<script setup>
+import icon from "./icon.vue"
+</script>
+
+<script>
+
+export default {
+  props: {
+    updatePage: {
+      type: Function,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      currentPage: "Home",
+      links: [
+        { name: 'Home' },
+        { name: 'Map' },
+      ],
+    };
+  },
+  methods: {
+    setActivePage(page) {
+      this.currentPage = page
+      this.$props.updatePage(page.toLowerCase())
+    },
+  },
+};
+</script>
+
+<style>
+.link:hover {
+  color: theme(colors.logo)
+}
+
+.nav-links {
+  display: flex;
+  justify-content: right;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  cursor: pointer;
+  padding: 2rem 0;
+  position: relative;
+}
+
+
+.nav-links li.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: theme(colors.logo);
+}
+</style>

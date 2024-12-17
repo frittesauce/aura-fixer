@@ -10,3 +10,10 @@
 * {
     font-family: SpaceGroteskFrontify;
 }
+
+.link {
+    transition-duration: 100ms;
+}
+.link:hover {
+    color: theme(colors.logo)
+}

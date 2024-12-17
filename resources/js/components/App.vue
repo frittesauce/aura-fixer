@@ -2,15 +2,13 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import MapPage from './MapPage.vue';
-
 import { ref } from 'vue'
 
 const props = defineProps(['page'])
-
 let page = ref(props.page)
 
-// updates the page var and updates the url
 function updatePage(newPage) {
+  console.log(newPage)
   page.value = newPage
   history.pushState(
     {},
@@ -23,8 +21,7 @@ function updatePage(newPage) {
 
 <template>
 
-  <navbar :page="page" @updatePage="updatePage"></navbar>
-
+  <navbar :updatePage="updatePage" />
 
   <!-- Shows matching page to the page variable -->
   <home v-if="page == 'home'"></home>
@@ -32,7 +29,7 @@ function updatePage(newPage) {
   <map-page v-else-if="page == 'map'"></map-page>
 
   <!-- 404 page -->
-  <div v-else class=" h-screen w-full justify-center flex items-center">
+  <div v-else class="flex items-center justify-center w-full h-screen ">
     <p>404 page not found :(</p>
   </div>
 
