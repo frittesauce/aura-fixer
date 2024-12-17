@@ -1,36 +1,30 @@
 <script setup>
-import Navbar from './navbar.vue';
-import Home from './Home.vue';
-import MapPage from './MapPage.vue';
 import { ref } from 'vue'
 
-const props = defineProps(['page'])
-let page = ref(props.page)
+const counter = ref(0)
 
-function updatePage(newPage) {
-  console.log(newPage)
-  page.value = newPage
-  history.pushState(
-    {},
-    null,
-    `/${newPage}`
-  )
+
+</script>
+
+<script>
+
+import navbar from './navbar.vue';
+export default {
+  name: "navbar",
+  components: {
+    'navbar': navbar
+  }
 }
-
 </script>
 
 <template>
 
-  <navbar :updatePage="updatePage" />
+  <navbar></navbar>
+  <navbar></navbar>
+  <navbar></navbar>
+  <navbar></navbar>
 
-  <!-- Shows matching page to the page variable -->
-  <home v-if="page == 'home'"></home>
-
-  <map-page v-else-if="page == 'map'"></map-page>
-
-  <!-- 404 page -->
-  <div v-else class="flex items-center justify-center w-full h-screen ">
-    <p>404 page not found :(</p>
-  </div>
-
+  <button type="button" @click="counter++" class="p-2 text-white bg-gray-500 rounded">
+    Counter is: {{ counter }}
+  </button>
 </template>
