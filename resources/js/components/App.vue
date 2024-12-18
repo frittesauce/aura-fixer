@@ -1,6 +1,8 @@
 <script setup>
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
+import admin from './pages/admin.vue'
+
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
 
@@ -20,18 +22,22 @@ function updatePage(newPage) {
 
 <template>
 
-  <navbar :page="page" :updatePage="updatePage" />
+  <div class=" h-screen w-screen flex flex-col">
 
-  <main class="overflow-y-auto grow h-60">
+    <navbar :page="page" :updatePage="updatePage" />
+
+    <main class="overflow-y-auto flex-auto">
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
-    
+
       <map-page v-else-if="page == 'map'"></map-page>
-    
+      <admin v-else-if="page == 'beheerder'"></admin>
+
       <!-- 404 page -->
       <div v-else class="flex items-center justify-center w-full h-screen ">
         <p>404 page not found :(</p>
       </div>
-  </main>
+    </main>
+  </div>
 
 </template>
