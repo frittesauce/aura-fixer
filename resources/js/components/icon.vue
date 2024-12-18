@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-    <svg width="312" height="58" xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="meet">
+    <svg width="312" height="58" xmlns="http://www.w3.org/2000/svg" fill="none">
         <g>
             <title>Layer 1</title>
             <path clip-rule="evenodd"

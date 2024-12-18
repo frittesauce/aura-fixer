@@ -7,6 +7,10 @@
     src: url("https://cdn.frontify.com/fonts/SpaceGroteskFrontify-Regular.woff2");
 }
 
+html, body {
+    background-color: white;
+}
+
 * {
     font-family: SpaceGroteskFrontify;
 }

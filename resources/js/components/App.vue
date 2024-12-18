@@ -8,7 +8,6 @@ const props = defineProps(['page'])
 let page = ref(props.page)
 
 function updatePage(newPage) {
-  console.log(newPage)
   page.value = newPage
   history.pushState(
     {},
