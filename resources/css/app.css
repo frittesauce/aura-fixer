@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: SpaceGroteskFrontify;
+    src: url("https://cdn.frontify.com/fonts/SpaceGroteskFrontify-Regular.woff2");
+}
+
+html, body {
+    background-color: white;
+}
+
+* {
+    font-family: SpaceGroteskFrontify;
+}
+
+.link {
+    transition-duration: 100ms;
+}
+.link:hover {
+    color: theme(colors.logo)
+}

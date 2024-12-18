@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>aura fixer - Give the city a proper winter arc!</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 
 </head>
-
-
-<body id="app" >
-    <app />
+<body id="app" class="flex flex-col overflow-y-hidden h-dvh">
+    <app :page="'{{ $page }}'">
 </body>
 
 </html>
