@@ -14,10 +14,7 @@
     @vite('resources/js/app.js')
 
 </head>
-
-
-
-<body id="app">
+<body id="app" class="flex flex-col overflow-y-hidden h-dvh">
     <app :page="'{{ $page }}'">
 </body>
 

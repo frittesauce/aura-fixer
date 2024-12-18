@@ -1,27 +1,31 @@
 <template>
-  <div class="flex w-full px-6">
-    <div class="my-4">
-      <icon></icon>
+  <div class="relative w-full">
+    <div class="flex w-full px-8">
+      <div class="my-4">
+        <icon></icon>
+      </div>
+      <nav ref="root" class="w-full navbar">
+        <ul class="h-full text-xl nav-links">
+          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }" class="link"
+            @click="setActivePage(link.name)">
+            {{ link.name }}
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav class="w-full navbar">
-      <ul class="h-full text-xl nav-links">
-        <li v-for="link in links" :key="link.name" :class="{ active: link.name === currentPage }" class="link"
-          @click="setActivePage(link.name)">
-          {{ link.name }}
-        </li>
-      </ul>
-    </nav>
+    <hr class="absolute bottom-0 w-full h-px bg-red-500">
   </div>
 </template>
 
 <script setup>
 import icon from "./icon.vue"
+
 </script>
 
 <script>
-
 export default {
   props: {
+    page: "map",
     updatePage: {
       type: Function,
       required: true,
@@ -29,7 +33,6 @@ export default {
   },
   data() {
     return {
-      currentPage: "Home",
       links: [
         { name: 'Home' },
         { name: 'Map' },
@@ -38,7 +41,6 @@ export default {
   },
   methods: {
     setActivePage(page) {
-      this.currentPage = page
       this.$props.updatePage(page.toLowerCase())
     },
   },
@@ -72,7 +74,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background-color: theme(colors.logo);
 }
 </style>
