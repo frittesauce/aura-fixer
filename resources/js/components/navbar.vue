@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full">
+  <div class="relative w-full flex-initial">
     <div class="flex w-full px-8">
       <div class="my-4 max-sm:hidden">
         <icon></icon>
