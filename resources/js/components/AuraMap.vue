@@ -25,7 +25,7 @@ export default {
 
 <style lang="css" scoped>
 #map {
-  height: 95vh;
+  height: 100%;
   width: 100%;
   z-index: 1;
 }
