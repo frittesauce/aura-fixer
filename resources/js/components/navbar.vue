@@ -5,15 +5,15 @@
         <icon></icon>
       </div>
       <nav ref="root" class="w-full navbar">
-        <ul class="flex list-none gap-6 h-full text-xl nav-links justify-right max-sm:[justify-center]">
-          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }" class="hover:theme(colors.logo)"
-            @click="setActivePage(link.name)">
-            {{ link.name }}
+        <ul class="flex h-full gap-6 text-xl sm:justify-end max-sm:justify-center nav-links">
+          <li v-for="link in links" :key="link" :class="{ active: link.toLowerCase() === page }"
+            class="cursor-pointer hover:text-logo" @click="setActivePage(link)">
+            {{ link }}
           </li>
         </ul>
       </nav>
     </div>
-    <hr class="absolute bottom-0 w-full h-px bg-red-500">
+    <hr class="absolute bottom-0 w-full h-px">
   </div>
 </template>
 
@@ -34,10 +34,7 @@ export default {
   },
   data() {
     return {
-      links: [
-        { name: 'Home' },
-        { name: 'Map' },
-      ],
+      links: ["Home", "Map", "Beheerder"]
     };
   },
   methods: {
@@ -49,13 +46,10 @@ export default {
 </script>
 
 <style>
-
 .nav-links li {
-  cursor: pointer;
   padding: 2rem 0;
   position: relative;
 }
-
 
 .nav-links li.active::after {
   content: '';
