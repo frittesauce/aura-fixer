@@ -20,18 +20,21 @@ function updatePage(newPage) {
 
 <template>
 
-  <navbar :page="page" :updatePage="updatePage" />
+  <div class=" h-screen w-screen flex flex-col">
 
-  <main class="overflow-y-auto grow h-60">
+    <navbar :page="page" :updatePage="updatePage" />
+
+    <main class="overflow-y-auto flex-auto">
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
-    
+
       <map-page v-else-if="page == 'map'"></map-page>
-    
+
       <!-- 404 page -->
       <div v-else class="flex items-center justify-center w-full h-screen ">
         <p>404 page not found :(</p>
       </div>
-  </main>
+    </main>
+  </div>
 
 </template>

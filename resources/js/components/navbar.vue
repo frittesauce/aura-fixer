@@ -1,13 +1,13 @@
 <template>
-  <div class="relative w-full">
+  <div class="relative w-full flex-initial">
     <div class="flex w-full px-8">
       <div class="my-4 max-sm:hidden">
         <icon></icon>
       </div>
       <nav ref="root" class="w-full navbar">
         <ul class="flex list-none gap-6 h-full text-xl nav-links justify-right max-sm:[justify-center]">
-          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }" class="hover:theme(colors.logo)"
-            @click="setActivePage(link.name)">
+          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }"
+            class="hover:theme(colors.logo)" @click="setActivePage(link.name)">
             {{ link.name }}
           </li>
         </ul>
@@ -49,7 +49,6 @@ export default {
 </script>
 
 <style>
-
 .nav-links li {
   cursor: pointer;
   padding: 2rem 0;
