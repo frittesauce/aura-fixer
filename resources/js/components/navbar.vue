@@ -1,12 +1,12 @@
 <template>
   <div class="relative w-full">
     <div class="flex w-full px-8">
-      <div class="my-4">
+      <div class="my-4 max-sm:hidden">
         <icon></icon>
       </div>
       <nav ref="root" class="w-full navbar">
-        <ul class="h-full text-xl nav-links">
-          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }" class="link"
+        <ul class="flex list-none gap-6 h-full text-xl nav-links justify-right max-sm:[justify-center]">
+          <li v-for="link in links" :key="link.name" :class="{ active: link.name.toLowerCase() === page }" class="hover:theme(colors.logo)"
             @click="setActivePage(link.name)">
             {{ link.name }}
           </li>
@@ -21,6 +21,7 @@
 import icon from "./icon.vue"
 
 </script>
+
 
 <script>
 export default {
@@ -48,18 +49,6 @@ export default {
 </script>
 
 <style>
-.link:hover {
-  color: theme(colors.logo)
-}
-
-.nav-links {
-  display: flex;
-  justify-content: right;
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 .nav-links li {
   cursor: pointer;
