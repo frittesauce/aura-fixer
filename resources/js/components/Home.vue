@@ -3,13 +3,16 @@
 
 <template>
   <section id="home">
-    <div class=" flex w-full p-32 justify-center items-center">
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fskibidi-toilet-official%2Fimages%2F9%2F99%2FNormalToiletImage.png%2Frevision%2Flatest%3Fcb%3D20230921103252&f=1&nofb=1&ipt=c9fb45bff53e27ec4cc0aa25d2898e27dce5433251e1ff4b77ac593998f1d974&ipo=images"
-        width="320" height="320">
-      <div>
-        <h1>gemeente rizz!</h1>
-        <p>de meest sigma stad</p>
+
+    <div class="w-dvw h-[70vh]">
+      <div class=" gap-8 flex justify-center sm:flex-row flex-col items-center w-full h-full">
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.paradefloatstuff.com%2Fwp-content%2Fuploads%2F2019%2F03%2Flet12g_sigma.jpg&f=1&nofb=1&ipt=27f1b5fa9b4ea67ff4999d84f576482e0832932dfc90143977c30d8e86efcddb&ipo=images"
+          alt="plaatje van een sigma" width="320" height="320" class=" rounded-xl" />
+        <div class="gap-y-4 flex flex-col w-96 h-96 justify-center">
+          <h1 class="text-4xl font-semibold">Welcome tot Aura-Fixer</h1>
+          <p class="max-w-96 text-base">Geef Sigmavile de winterarc die we nodig hebben!</p>
+        </div>
       </div>
     </div>
   </section>
