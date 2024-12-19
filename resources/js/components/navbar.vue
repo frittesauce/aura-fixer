@@ -56,10 +56,10 @@ export default {
 .nav-links li.active::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background-color: theme(colors.logo);
 }
 </style>
