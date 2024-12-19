@@ -17,6 +17,8 @@ export default {
 
             colors: {
                 "logo": "#08841c",
+                "button": "#c93675",
+                "button-hover": "#a12b5e"
             },
         },
     },

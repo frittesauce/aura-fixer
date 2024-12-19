@@ -21,12 +21,10 @@ function updatePage(newPage) {
 </script>
 
 <template>
+  <div class="flex w-screen h-screen sm:flex-col max-sm:flex-col-reverse">
+    <navbar :currentPage="page" :updatePage="updatePage" />
 
-  <div class=" h-screen w-screen flex flex-col">
-
-    <navbar :page="page" :updatePage="updatePage" />
-
-    <main class="overflow-y-auto flex-auto">
+    <main class="flex-auto overflow-y-auto">
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 
@@ -39,5 +37,4 @@ function updatePage(newPage) {
       </div>
     </main>
   </div>
-
 </template>
