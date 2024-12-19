@@ -6,7 +6,7 @@
       </div>
       <nav ref="root" class="w-full navbar">
         <ul class="flex h-full gap-6 text-xl sm:justify-end max-sm:justify-center nav-links">
-          <li v-for="page in pages" :key="page" :class="{ active: page.toLowerCase() === currentPage }"
+          <li v-for="page in pages" :key="page" :id="page" :class="{ active: page.toLowerCase() === currentPage }"
             @click="setActivePage(page)">
             <anchor>
             {{ page }}
