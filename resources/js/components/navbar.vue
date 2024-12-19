@@ -26,7 +26,7 @@ import icon from "./icon.vue"
 <script>
 export default {
   props: {
-    page: "map",
+    page: "home",
     updatePage: {
       type: Function,
       required: true,
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      links: ["Home", "Map", "Beheerder"]
+      links: ["Home", "Map", "Beheerder", "Melden"]
     };
   },
   methods: {
