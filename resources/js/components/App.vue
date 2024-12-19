@@ -1,7 +1,7 @@
 <script setup>
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
-import admin from './pages/admin.vue'
+import admin from './pages/Admin.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
