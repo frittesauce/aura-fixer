@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import icon from "./icon.vue"
+import icon from "./Icon.vue"
 
 </script>
 

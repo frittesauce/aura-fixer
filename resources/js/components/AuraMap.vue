@@ -16,8 +16,8 @@ export default {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    // L.marker([51.9280, 4.4908]).addTo(map).bindPopup('Skibidi')
-      // .openPopup();
+    L.marker([51.9280, 4.4908]).addTo(map).bindPopup('Skibidi')
+        .openPopup();
   }
 };
 </script>
