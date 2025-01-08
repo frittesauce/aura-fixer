@@ -13,7 +13,7 @@ function clickNav(page) {
                     alt="plaatje van een sigma" class=" coolFisch w-80 h-80 rounded-xl " />
                 <div class="flex flex-col gap-y-4 justify-center sm:max-w-none max-w-80">
                     <h1 class="text-4xl font-semibold">
-                        Welcome tot Aura-Fixer
+                            Welkom tot Aura-Fixer
                     </h1>
                     <p class="text-base max-w-96 text-md font-semibold">
                         Geef Sigmavile de winterarc die we nodig hebben! <br>
