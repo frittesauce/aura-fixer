@@ -2,6 +2,7 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import report from './pages/report.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
@@ -29,6 +30,7 @@ function updatePage(newPage) {
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
+        <report v-else-if="page == 'melden'"></report>
       <admin v-else-if="page == 'beheerder'"></admin>
 
       <!-- 404 page -->
