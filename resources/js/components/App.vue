@@ -2,6 +2,7 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import report from './pages/report.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
