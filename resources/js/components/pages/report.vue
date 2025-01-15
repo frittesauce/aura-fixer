@@ -28,8 +28,11 @@ export default {
             data.append("name", this.name);
             data.append("email", this.email);
             data.append("description", this.description);
-            const response = await fetch("../api/post", {
+            const response = await fetch("/report", {
                 method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
                 body: data
             });
             const text = await response.text()
