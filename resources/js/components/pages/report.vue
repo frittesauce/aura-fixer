@@ -33,6 +33,7 @@ export default {
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
+
                 body: data
             });
             const text = await response.text()
