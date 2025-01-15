@@ -10,7 +10,7 @@ function clickNav(page) {
         <div class="w-full h-full">
             <div class="flex flex-col justify-center items-center w-full h-full sm:flex-row gap-4">
                 <img src="/images/betacityvssigmaicty.png" alt="plaatje van een sigma"
-                    class="w-80 sm:w-[600px] h-80 sm:h-[600px] rounded-xl " />
+                    class="w-80 sm:w-[600px] h-80 sm:h-[600px] rounded-xl sm:rounded-3xl " />
                 <div class="flex flex-col gap-y-4 justify-center sm:max-w-none max-w-80">
                     <h1 class="text-4xl sm:text-6xl font-semibold">
                         Welkom tot Aura-Fixer
