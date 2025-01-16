@@ -7,13 +7,13 @@
       <nav ref="root" class="w-full navbar">
         <ul class="flex h-full gap-6 text-xl sm:justify-end max-sm:justify-center nav-links">
           <li v-for="link in links" :key="link" :class="{ active: link.toLowerCase() === page }"
-            class="cursor-pointer hover:text-logo" @click="setActivePage(link)">
+            class="cursor-pointer hover:text-logo" @click="setActivePage(link)" :id="link">
             {{ link }}
           </li>
         </ul>
       </nav>
     </div>
-    <hr class="absolute bottom-0 w-full h-px">
+    <hr class="absolute bottom-full sm:bottom-0 w-full h-px border-4">
   </div>
 </template>
 

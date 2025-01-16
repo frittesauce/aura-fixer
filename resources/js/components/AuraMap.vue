@@ -17,9 +17,10 @@ export default {
     }).addTo(map);
 
     L.marker([51.9280, 4.4908]).addTo(map).bindPopup('Skibidi')
-        .openPopup();
+      .openPopup();
   }
 };
+
 </script>
 
 <style lang="css" scoped>

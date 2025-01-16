@@ -30,11 +30,12 @@ function updatePage(newPage) {
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
-        <report v-else-if="page == 'melden'"></report>
+      <report v-else-if="page == 'melden'"></report>
       <admin v-else-if="page == 'beheerder'"></admin>
 
       <!-- 404 page -->
-      <div v-else class="flex items-center justify-center w-full h-screen ">
+      <div v-else class="flex flex-col items-center justify-center w-full h-screen ">
+        <img src="/images/fish.png" alt="image of a cool fish" class=" w-80 h80">
         <p>404 page not found :(</p>
       </div>
     </main>
