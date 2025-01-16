@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "lan": "vite --host"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.2.1",

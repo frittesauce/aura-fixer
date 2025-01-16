@@ -1,4 +1,7 @@
 <script setup>
+
+import Cam from './Cam.vue';
+
 function clickNav(page) {
     let nav = document.getElementById(page)
     nav.click()
@@ -28,6 +31,7 @@ function clickNav(page) {
             </div>
         </div>
     </div>
+    <Cam></Cam>
 </template>
 
 <style>
