@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use function Pest\Laravel\json;
 
 class ReportController extends Controller
 {
@@ -12,7 +14,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-
+        echo json_encode(Report::all());
     }
 
     /**
@@ -28,7 +30,23 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-
+        if ($request->post('name')) {
+            if (!$request->post('email')) {
+                return response()->json(['error' => 'Email is required'], Response::HTTP_BAD_REQUEST);
+            } else if (!$request->post('description')) {
+                return response()->json(['error' => 'Description is required'], Response::HTTP_BAD_REQUEST);
+            }
+        } else {
+            return response()->json(['error' => 'Name is required'], Response::HTTP_BAD_REQUEST);
+        }
+        $report = new Report();
+        $report->name = $request->post('name');
+        $report->email = $request->post('email');
+        $report->description = $request->post('description');
+        $report->latitude = $request->post('latitude');
+        $report->longitude = $request->post('longitude');
+        $report->save();
+        return $report->all();
     }
 
     /**
@@ -36,7 +54,7 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        //
+
     }
 
     /**

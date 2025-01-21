@@ -13,4 +13,5 @@ class Report extends Model
      * @var string
      */
     protected $table = 'reports';
+    public $timestamps = false;
 }
