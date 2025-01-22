@@ -14,7 +14,6 @@
     </div>
 </template>
 <script>
-import {request} from "axios";
 
 export default {
     data() {
@@ -29,6 +28,29 @@ export default {
     methods: {
         async submit() {
 
+            let Location = new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            resolve({
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude
+                            });
+                        },
+                        (error) => {
+                            reject(error);
+                        }
+                    );
+                } else {
+                    reject(new Error("Geolocation is not supported by this browser."));
+                }
+            });
+            Location.then(
+                function (value) {
+                    this.latitude = value.latitude;
+                    this.longitude = value.longitude;
+                }
+            )
 
             let data = new FormData();
             data.append("name", this.name);
@@ -53,25 +75,6 @@ export default {
             } catch {
             }
         },
-        async storePosition(position) {
-            return new Promise((resolve, reject) => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            resolve({
-                                this.latitude: position.coords.latitude,
-                                this.longitude: position.coords.longitude,
-                            });
-                        },
-                        (error) => {
-                            reject(error); // Handle user denial or other errors
-                        }
-                    );
-                } else {
-                    reject(new Error("Geolocation is not supported by this browser."));
-                }
-            });
-        }
     }
 }
 </script>
