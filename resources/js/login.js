@@ -9,12 +9,11 @@ form.onsubmit = (event) => {
     const username = usernameField.value;
     const password = passwordField.value;
 
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
-
     fetch("../api/login", {
         method: "POST",
-        body: formData,
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
     });
-};
+}; 
