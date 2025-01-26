@@ -1,16 +1,18 @@
 <?php
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 Route::post('/post', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-define("SESSION_EXPIRE_MINUTES", 1);
-define("SESSION_EXPIRE_MINUTES_COOKIE", 1);
+define("SESSION_EXPIRE_MINUTES", 5);
+define("SESSION_EXPIRE_MINUTES_COOKIE", 60);
 
 Route::post('/login', function (Request $request) {
     $credentials = $request->json()->all();
@@ -43,15 +45,12 @@ Route::post('/login', function (Request $request) {
 
     $token = str()->random(64);
 
+    $session = Array();
     $session["token"] = $token;
     $session["user_id"] = $userid;
     $session["expire"] = time() + SESSION_EXPIRE_MINUTES * 60;
     DB::table("active_sessions")->insert($session);
 
-    return redirect('../testing')->withCookie(cookie("session_token", $token, SESSION_EXPIRE_MINUTES_COOKIE));
-
-    // return [
-    // "id" => $userid,
-    // "token" => $token
-    // ];
+    $cookie = cookie("session_token", $token, SESSION_EXPIRE_MINUTES_COOKIE);
+    return response([])->withCookie($cookie);
 });
