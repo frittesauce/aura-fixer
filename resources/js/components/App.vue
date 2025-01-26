@@ -7,8 +7,9 @@ import login from './pages/Login.vue'
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
 
-const props = defineProps(['page']);
+const props = defineProps(['page', 'authorized']);
 let page = ref(props.page);
+let authorized = ref(props.authorized);
 
 function updatePage(newPage) {
   page.value = newPage;
@@ -31,8 +32,8 @@ function updatePage(newPage) {
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
-      <login v-else-if="page == 'login'"></login>
-      <admin v-else-if="page == 'beheerder'"></admin>
+      <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
+      <login v-else-if="page == 'beheerder' && authorized != true"></login>
 
       <!-- 404 page -->
       <div v-else class="flex items-center justify-center w-full h-screen ">
