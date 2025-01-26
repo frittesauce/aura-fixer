@@ -22,5 +22,5 @@ form.onsubmit = async (event) => {
       return alert(json["error"]);
   }
 
-  window.location = "../map";  
+  window.location.reload();
 }; 

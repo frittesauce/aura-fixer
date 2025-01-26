@@ -2,20 +2,21 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import login from './pages/Login.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
 
-const props = defineProps(['page'])
-let page = ref(props.page)
+const props = defineProps(['page']);
+let page = ref(props.page);
 
 function updatePage(newPage) {
-  page.value = newPage
+  page.value = newPage;
   history.pushState(
     {},
     null,
     `/${newPage}`
-  )
+  );
 }
 
 </script>
@@ -25,10 +26,12 @@ function updatePage(newPage) {
     <navbar :currentPage="page" :updatePage="updatePage" />
 
     <main class="flex-auto overflow-y-auto">
+    
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
+      <login v-else-if="page == 'login'"></login>
       <admin v-else-if="page == 'beheerder'"></admin>
 
       <!-- 404 page -->
