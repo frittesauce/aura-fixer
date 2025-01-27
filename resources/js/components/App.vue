@@ -2,21 +2,23 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import login from './pages/Login.vue'
 import report from './pages/report.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
 
-const props = defineProps(['page'])
-let page = ref(props.page)
+const props = defineProps(['page', 'authorized']);
+let page = ref(props.page);
+let authorized = ref(props.authorized);
 
 function updatePage(newPage) {
-  page.value = newPage
+  page.value = newPage;
   history.pushState(
     {},
     null,
     `/${newPage}`
-  )
+  );
 }
 
 </script>
@@ -26,12 +28,14 @@ function updatePage(newPage) {
     <navbar :currentPage="page" :updatePage="updatePage" />
 
     <main class="flex-auto overflow-y-auto">
+    
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
+      <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
+      <login v-else-if="page == 'beheerder' && authorized != true"></login>
       <report v-else-if="page == 'melden'"></report>
-      <admin v-else-if="page == 'beheerder'"></admin>
 
       <!-- 404 page -->
       <div v-else class="flex flex-col items-center justify-center w-full h-screen ">

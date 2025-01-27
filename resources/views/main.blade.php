@@ -17,7 +17,9 @@
 
 </head>
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
-<app :page="'{{ $page }}'"> </app>
+
+    <app :authorized={{ $authorized }} :page="'{{ $page }}'">
+
 </body>
 
 </html>
