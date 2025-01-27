@@ -14,6 +14,8 @@
     </div>
 </template>
 <script>
+
+
 export default {
     data() {
         return {
@@ -24,12 +26,29 @@ export default {
     },
     methods: {
         async submit() {
+            let latitude;
+            let longitude;
+            function success(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+            }
+            function error() {
+                console.log("ERROR");
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error);
+
             let data = new FormData();
             data.append("name", this.name);
             data.append("email", this.email);
             data.append("description", this.description);
-            const response = await fetch("../api/post", {
+            data.append("latitude", latitude);
+            data.append("longitude", longitude);
+            const response = await fetch("/api/report", {
                 method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
                 body: data
             });
             const text = await response.text()
@@ -39,8 +58,9 @@ export default {
                     alert(json.error);
                     return;
                 }
-            } catch { }
-        }
+            } catch {
+            }
+        },
     }
 }
 </script>

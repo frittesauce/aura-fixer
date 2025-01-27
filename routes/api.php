@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('/post', [\App\Http\Controllers\DBController::class, 'write'])
-    ->middleware(\App\Http\Middleware\CheckData::class);
+Route::resources([
+    'report' => ReportController::class,
+]);
