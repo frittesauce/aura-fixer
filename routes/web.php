@@ -26,11 +26,6 @@ function IsAuthorized(string $page, Request $request): bool
 
 Route::get("/{page?}", function (Request $request, ?string $page = "home") {
     $IsAuthorized = IsAuthorized($page, $request);
-    // if ($page == "beheerder") {
-    //     if (!$IsAuthorized) {
-    //         $page = "login";
-    //     }
-    // }
 
     return view("main", [
         "page" => $page,
