@@ -15,50 +15,36 @@
 </template>
 <script>
 
+
 export default {
     data() {
         return {
             name: '',
             email: '',
-            description: '',
-            latitude: 0,
-            longitude: 0
+            description: ''
         }
     },
     methods: {
         async submit() {
+            let latitude;
+            let longitude;
+            function success(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+            }
+            function error() {
+                console.log("ERROR");
+            }
 
-            let Location = new Promise((resolve, reject) => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            resolve({
-                                latitude: position.coords.latitude,
-                                longitude: position.coords.longitude
-                            });
-                        },
-                        (error) => {
-                            reject(error);
-                        }
-                    );
-                } else {
-                    reject(new Error("Geolocation is not supported by this browser."));
-                }
-            });
-            Location.then(
-                function (value) {
-                    this.latitude = value.latitude;
-                    this.longitude = value.longitude;
-                }
-            )
+            navigator.geolocation.getCurrentPosition(success, error);
 
             let data = new FormData();
             data.append("name", this.name);
             data.append("email", this.email);
             data.append("description", this.description);
-            data.append("latitude", this.latitude);
-            data.append("longitude", this.longitude);
-            const response = await fetch("/report", {
+            data.append("latitude", latitude);
+            data.append("longitude", longitude);
+            const response = await fetch("/api/report", {
                 method: "POST",
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
