@@ -32,6 +32,6 @@ Route::get("/{page?}", function (Request $request, ?string $page = "home") {
         "page" => $page,
         "authorized" => $IsAuthorized ? "true" : "false",
     ]);
-}
+});
 
 
