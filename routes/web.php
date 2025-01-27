@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\IsAuthorized;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,4 +32,6 @@ Route::get("/{page?}", function (Request $request, ?string $page = "home") {
         "page" => $page,
         "authorized" => $IsAuthorized ? "true" : "false",
     ]);
-});
+}
+
+

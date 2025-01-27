@@ -3,6 +3,7 @@ import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
 import login from './pages/Login.vue'
+import report from './pages/report.vue'
 
 import MapPage from './MapPage.vue';
 import { ref } from 'vue'
@@ -34,9 +35,11 @@ function updatePage(newPage) {
       <map-page v-else-if="page == 'map'"></map-page>
       <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
       <login v-else-if="page == 'beheerder' && authorized != true"></login>
+      <report v-else-if="page == 'melden'"></report>
 
       <!-- 404 page -->
-      <div v-else class="flex items-center justify-center w-full h-screen ">
+      <div v-else class="flex flex-col items-center justify-center w-full h-screen ">
+        <img src="/images/fish.png" alt="image of a cool fish" class=" w-80 h80">
         <p>404 page not found :(</p>
       </div>
     </main>

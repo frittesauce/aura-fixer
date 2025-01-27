@@ -1,34 +1,32 @@
 <template>
-  <div class="relative flex-initial w-full bg-white">
+  <div class="relative w-full flex-initial">
     <div class="flex w-full px-8">
       <div class="my-4 max-sm:hidden">
         <icon></icon>
       </div>
       <nav ref="root" class="w-full navbar">
         <ul class="flex h-full gap-6 text-xl sm:justify-end max-sm:justify-center nav-links">
-          <li v-for="page in pages" :key="page" :id="page" :class="{ active: page.toLowerCase() === currentPage }"
-            @click="setActivePage(page)">
-            <anchor>
-            {{ page }}
-            </anchor>
+          <li v-for="link in links" :key="link" :class="{ active: link.toLowerCase() === page }"
+            class="cursor-pointer hover:text-logo" @click="setActivePage(link)" :id="link">
+            {{ link }}
           </li>
         </ul>
       </nav>
     </div>
-    <hr class="absolute bottom-0 w-full h-px">
+    <hr class="absolute bottom-full sm:bottom-0 w-full h-px border-4">
   </div>
 </template>
 
 <script setup>
 import icon from "./Icon.vue"
-import anchor from "./Anchor.vue"
+
 </script>
 
 
 <script>
 export default {
   props: {
-    currentPage: "",
+    page: "home",
     updatePage: {
       type: Function,
       required: true,
@@ -36,7 +34,7 @@ export default {
   },
   data() {
     return {
-      pages: ["Home", "Map", "Beheerder"]
+      links: ["Home", "Map", "Beheerder", "Melden"]
     };
   },
   methods: {
