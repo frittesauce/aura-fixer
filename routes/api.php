@@ -8,4 +8,5 @@ use App\Http\Controllers\AdminLogin;
 Route::resources([
     'login' => AdminLogin::class,
   'report' => ReportController::class,
+  'reports' => ReportController::class,
 ]);

@@ -13,7 +13,7 @@
         </ul>
       </nav>
     </div>
-    <hr class="absolute bottom-full sm:bottom-0 w-full h-px border-4">
+    <hr class="absolute bottom-full sm:bottom-0 w-full h-px border-1">
   </div>
 </template>
 
