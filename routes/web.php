@@ -4,15 +4,48 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Http\Middleware\Authorized;
+use Illuminate\Support\Facades\DB;
+
+function IsAuthorized(Request $request): bool
+{
+    $authorized = new Authorized();
+    return $authorized->IsAuthorized($request);
+}
+
+Route::get('/report/{id}', function (Request $request, ?int $id = 0) {
+    if (!$id) {
+        return response()->json(["error" => "No id was provided"]);
+    }
+
+    $data = DB::table("reports")->where("id", $id);
+
+    $requested = ["name", "description", "email"];
+    $values = [];
+
+    foreach ($requested as $key) {
+        $value = $data->value($key);
+        $values[$key] = $value;
+    }
+
+    return view("main", [
+        "page" => "report",
+        "authorized" => "true",
+    ]);
+})->middleware([Authorized::class]);
+
 
 Route::get("/{page?}", function (Request $request, ?string $page = "home") {
-    $authorized = new Authorized();
-    $IsAuthorized = $authorized->IsAuthorized($request);
+    $IsAuthorized = IsAuthorized($request);
+
+    if (!$IsAuthorized && $page == "beheerder") {
+        $page = "login";
+    } else if ($IsAuthorized && $page == "login") {
+        return response()->redirectTo("beheerder");
+    }
 
     return view("main", [
         "page" => $page,
         "authorized" => $IsAuthorized ? "true" : "false",
     ]);
 });
-
 

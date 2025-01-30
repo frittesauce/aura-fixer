@@ -7,7 +7,7 @@ const reports = ref([]);
 async function deleteReport(id) {
     reports.value = reports.value.filter(report => report.id !== id);
 
-    await fetch(`../api/reports/${id}`, {
+    await fetch(`../api/report/${id}`, {
         method: "DELETE",
     });
 }

@@ -2,6 +2,7 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import adminReport from './pages/AdminReport.vue'
 import login from './pages/Login.vue'
 import report from './pages/report.vue'
 
@@ -42,8 +43,9 @@ function updatePage(newPage) {
       <home v-if="page == 'home'"></home>
 
       <map-page v-else-if="page == 'map'"></map-page>
-      <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
-      <login v-else-if="page == 'beheerder' && authorized != true"></login>
+      <admin v-else-if="page == 'beheerder'"></admin>
+      <login v-else-if="page == 'login' || authorized != true"></login>
+      <adminReport v-else-if="page == 'report'"></adminReport>
       <report v-else-if="page == 'melden'"></report>
 
       <!-- 404 page -->
