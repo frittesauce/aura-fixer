@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('description');
-            $table->binary("image");
-            $table->float("latitude");
-            $table->float("longitude");
+            $table->binary("image")->nullable();
+            $table->float("latitude")->nullable();
+            $table->float("longitude")->nullable();
         });
     }
 
