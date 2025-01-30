@@ -76,13 +76,13 @@ class ReportController extends Controller
     public function destroy($id)
     {
         $report = Report::find($id);
-        
+
         if (!$report) {
-        return response()->json(['message' => 'Report not found'], 404);
+            return response()->json(['message' => 'Report not found'], 404);
         }
-        
+
         $report->delete();
-        
+
         return response()->json(['message' => 'Report deleted successfully']);
     }
 }
