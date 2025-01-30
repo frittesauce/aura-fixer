@@ -5,8 +5,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLogin;
 
+use App\Http\Middleware\Authorized;
+
 Route::resources([
-    'login' => AdminLogin::class,
+  'login' => AdminLogin::class,
   'report' => ReportController::class,
-  'reports' => ReportController::class,
 ]);
+
+Route::resource(
+  "/reports",
+  ReportController::class
+)->middleware(Authorized::class);
+
+Route::resource(
+  "/extend-token",
+  controller: AdminLogin::class
+)->middleware(Authorized::class);
+
+Route::delete('/reports/{id}', [ReportController::class, 'destroy'])->middleware([Authorized::class]);
+

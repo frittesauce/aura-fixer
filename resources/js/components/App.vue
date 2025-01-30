@@ -12,6 +12,15 @@ const props = defineProps(['page', 'authorized']);
 let page = ref(props.page);
 let authorized = ref(props.authorized);
 
+if (authorized.value) {
+  setInterval(async () => {
+      const response = await fetch("../api/extend-token");
+      if (response.status !== 200) {
+          window.location.reload();
+      }
+  }, 30 * 1000);
+}
+
 function updatePage(newPage) {
   page.value = newPage;
   history.pushState(
@@ -28,7 +37,7 @@ function updatePage(newPage) {
     <navbar :currentPage="page" :updatePage="updatePage" />
 
     <main class="flex-auto overflow-y-auto">
-    
+
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 

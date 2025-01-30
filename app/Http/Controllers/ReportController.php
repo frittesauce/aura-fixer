@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use function Pest\Laravel\json;
 
 class ReportController extends Controller
 {
@@ -52,10 +51,7 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
-    {
-
-    }
+    public function show(Report $report) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -76,8 +72,16 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy($id)
     {
-        //
+        $report = Report::find($id);
+
+        if (!$report) {
+            return response()->json(['message' => 'Report not found'], 404);
+        }
+
+        $report->delete();
+
+        return response()->json(['message' => 'Report deleted successfully']);
     }
 }
