@@ -14,6 +14,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @vite('resources/js/login.js')
+    @vite('resources/js/reports.js')
 
 </head>
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
