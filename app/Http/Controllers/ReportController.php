@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use function Pest\Laravel\json;
 
 class ReportController extends Controller
 {

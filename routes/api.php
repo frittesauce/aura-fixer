@@ -16,5 +16,11 @@ Route::resource(
   "/reports",
   ReportController::class
 )->middleware(Authorized::class);
+
+Route::resource(
+  "/extend-token",
+  controller: AdminLogin::class
+)->middleware(Authorized::class);
+
 Route::delete('/reports/{id}', [ReportController::class, 'destroy'])->middleware([Authorized::class]);
 
