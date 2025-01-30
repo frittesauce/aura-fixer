@@ -17,7 +17,7 @@ export default {
       }).addTo(map);
 
 
-      let response = await fetch("/report", {
+      let response = await fetch("/api/report", {
           method: "GET"
       });
       let json = await response.json();
@@ -27,7 +27,7 @@ export default {
       }
       console.log(json);
       for (let i = 0; i< json.length; i++) {
-          console.log(json[i].latitude);
+          console.log(json[i]);
           L.marker([json[i].latitude, json[i].longitude]).addTo(map).bindPopup(json[i].description)
       }
   }
