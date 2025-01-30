@@ -1,18 +1,24 @@
 <template>
     <div class="flex justify-center items-center text-white h-full">
         <form onsubmit="event.preventDefault()" class="flex w-1/3 h-4/6 bg-logo box-border p-11 flex-col">
+            <Cam></Cam>
             <input type="text" v-model="name"
-                   class="text-black hover:border-none h-12 p-1 text-xl focus:outline-none focus:outline-offset-4 focus:outline-white input">
+                class="text-black hover:border-none h-12 p-1 text-xl focus:outline-none focus:outline-offset-4 focus:outline-white input">
             <label>lll</label>
             <input type="email" v-model="email"
-                   class="text-black hover:border-none  text-xl p-1 focus:outline-none h-12 focus:outline-offset-4 focus:outline-white input">
+                class="text-black hover:border-none  text-xl p-1 focus:outline-none h-12 focus:outline-offset-4 focus:outline-white input">
             <label>lll</label>
             <input type="text" v-model="description"
-                   class="text-black hover:border-none  text-xl p-1 focus:outline-none h-12 focus:outline-offset-4 focus:outline-white input">
+                class="text-black hover:border-none  text-xl p-1 focus:outline-none h-12 focus:outline-offset-4 focus:outline-white input">
             <button @click="submit">submit</button>
         </form>
     </div>
 </template>
+
+<script setup>
+import Cam from '../Cam.vue';
+</script>
+
 <script>
 
 
@@ -26,6 +32,11 @@ export default {
     },
     methods: {
         async submit() {
+
+            const imageCanvas = document.getElementById("canvas")
+
+
+
             let latitude;
             let longitude;
             function success(position) {
@@ -36,7 +47,7 @@ export default {
                 console.log("ERROR");
             }
 
-            navigator.geolocation.getCurrentPosition(success, error);
+            await navigator.geolocation.getCurrentPosition(success, error);
 
             let data = new FormData();
             data.append("name", this.name);
@@ -44,6 +55,13 @@ export default {
             data.append("description", this.description);
             data.append("latitude", latitude);
             data.append("longitude", longitude);
+
+            // < !--geen idee hoe ik de image moet toevoegen in de formdata vogel jij dat maar uit-- >
+
+            // imageCanvas.toBlob(async (blob) => {
+            //     data.append("image", blob, "picture.png")
+            // })
+
             const response = await fetch("/api/report", {
                 method: "POST",
                 headers: {
@@ -66,7 +84,4 @@ export default {
 </script>
 
 
-<style scoped lang="css">
-
-
-</style>
+<style scoped lang="css"></style>
