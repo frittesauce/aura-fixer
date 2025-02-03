@@ -45,6 +45,7 @@ class ReportController extends Controller
         $report->description = $request->post('description');
         $report->latitude = $request->post('latitude');
         $report->longitude = $request->post('longitude');
+        $report->image = $request->post('image');
         $report->save();
         return $report->all();
     }

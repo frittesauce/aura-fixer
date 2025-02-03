@@ -1,6 +1,7 @@
 <template>
     <div class="flex justify-center items-center text-white h-full">
-        <form onsubmit="event.preventDefault()" class="flex w-1/3 h-4/6 bg-logo box-border p-11 flex-col">
+        <img src="https://www.rotterdam.nl/_next/image?url=https%3A%2F%2Fbackend-dvg.rotterdam.nl%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fhero_large%2Fpublic%2F2022-12%2F22500-Arnoud-Verhey_0.jpg%3Fh%3D940640a5%26itok%3Dl9pnN9Gq&w=3840&q=75" class="absolute bg-contain bg-center w-5/6">
+        <form onsubmit="event.preventDefault()" class="flex relative w-1/3 h-4/6 bg-logo box-border p-11 flex-col overflow-scroll z-10">
             <h1 class="text-center text-4xl font-[1000]">Een klacht melden</h1>
             <Cam></Cam>
             <input type="text" v-model="name"
@@ -37,8 +38,6 @@ export default {
 
             const imageCanvas = document.getElementById("canvas")
 
-
-
             let latitude;
             let longitude;
             let name = this.name;
@@ -50,18 +49,17 @@ export default {
                 longitude = position.coords.longitude;
 
                 let data = new FormData();
-                data.append("name", name);
-                data.append("email", email);
-                data.append("description", description);
-                data.append("latitude", latitude);
-                data.append("longitude", longitude);
-                
-                
-                // < !--geen idee hoe ik de image moet toevoegen in de formdata vogel jij dat maar uit-- >
+                imageCanvas.toBlob(async (blob) => {
+                    data.append("image", name);
+                    data.append("name", name);
+                    data.append("email", email);
+                    data.append("description", description);
+                    data.append("latitude", latitude);
+                    data.append("longitude", longitude);
+                    console.log(data);
+                })
 
-                // imageCanvas.toBlob(async (blob) => {
-              //     data.append("image", blob, "picture.png")
-                // })
+
                 const response = await fetch("/api/report", {
                     method: "POST",
                     headers: {

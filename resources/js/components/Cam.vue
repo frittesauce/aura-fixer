@@ -2,9 +2,9 @@
   <div class="flex relative">
     <div class=" flex relative">
       <div class="camera absolute">
-        <video id="video" width="700" height="500">camera is turned of :(</video>
+        <video id="video" width="300" height="200">camera is turned of :(</video>
       </div>
-      <canvas id="canvas" width="700" height="500"></canvas>
+      <canvas id="canvas" width="200" height="200"></canvas>
     </div>
     <div class=" flex bottom-0 right-0 left-0 absolute z-50  self-center justify-self-center"><button class=" h-32 w-32"
         id="startbutton"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -68,7 +68,7 @@ onMounted(() => {
   }, false);
 
 
-}) 
+})
 </script>
 
 <style></style>
