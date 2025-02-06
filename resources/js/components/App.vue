@@ -2,6 +2,7 @@
 import Navbar from './navbar.vue';
 import Home from './Home.vue';
 import admin from './pages/Admin.vue'
+import adminReport from './pages/AdminReport.vue'
 import login from './pages/Login.vue'
 import report from './pages/report.vue'
 
@@ -10,7 +11,8 @@ import { ref } from 'vue'
 
 const props = defineProps(['page', 'authorized']);
 let page = ref(props.page);
-let authorized = ref(props.authorized);
+let authorized = ref(props.authorized == true);
+
 
 if (authorized.value) {
   setInterval(async () => {
@@ -41,10 +43,12 @@ function updatePage(newPage) {
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 
+      <report v-else-if="page == 'melden'"></report>
       <map-page v-else-if="page == 'map'"></map-page>
+      <adminReport v-else-if="page == 'report'"></adminReport>
+      
       <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
       <login v-else-if="page == 'beheerder' && authorized != true"></login>
-      <report v-else-if="page == 'melden'"></report>
 
       <!-- 404 page -->
       <div v-else class="flex flex-col items-center justify-center w-full h-screen ">

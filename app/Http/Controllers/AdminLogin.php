@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Middleware\Authorized;
-
 define("SESSION_EXPIRE_MINUTES", 5);
 define("SESSION_EXPIRE_MINUTES_COOKIE", 60);
 

@@ -18,16 +18,16 @@ class Authorized
         if (empty($token)) {
             return false;
         }
-    
+
         DB::table("active_sessions")->where("expire", "<", time())->delete();
-    
+
         $data = DB::table("active_sessions")->where("token", $token);
         $user_id = $data->value("user_id");
-    
+
         if (empty($user_id)) {
             return false;
         }
-    
+
         return true;
     }
 
@@ -39,7 +39,10 @@ class Authorized
     public function handle(Request $request, Closure $next): Response
     {
         if (!$this->IsAuthorized($request)) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
+            return response(view("main", [
+                "page" => "login",
+                "authorized" => "false",
+            ]));
         }
         return $next($request);
     }

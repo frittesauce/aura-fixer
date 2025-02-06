@@ -1,5 +1,39 @@
+<script setup>
+import { onMounted } from 'vue';
 
-<script setup></script>
+onMounted(() => {
+    const form = document.getElementById("login");
+
+    const passwordField = document.getElementById("password");
+    const usernameField = document.getElementById("username");
+
+    form.onsubmit = async (event) => {
+        event.preventDefault();
+
+        const username = usernameField.value;
+        const password = passwordField.value;
+
+        const response = await fetch("../api/login", {
+            method: "POST",
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+        });
+
+        const json = await response.json();
+        if (json["error"]) {
+            return alert(json["error"]);
+        }
+
+        window.location.reload();
+    };
+})
+
+
+
+
+</script>
 
 <template>
     <div class="relative h-full bg-cover" style="
