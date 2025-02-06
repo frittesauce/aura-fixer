@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-    @vite('resources/js/login.js')
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
 
     <app :authorized={{ $authorized }} :page="'{{ $page }}'">

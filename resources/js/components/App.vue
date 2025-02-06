@@ -11,7 +11,8 @@ import { ref } from 'vue'
 
 const props = defineProps(['page', 'authorized']);
 let page = ref(props.page);
-let authorized = ref(props.authorized);
+let authorized = ref(props.authorized == true);
+
 
 if (authorized.value) {
   setInterval(async () => {
@@ -42,11 +43,12 @@ function updatePage(newPage) {
       <!-- Shows matching page to the page variable -->
       <home v-if="page == 'home'"></home>
 
-      <map-page v-else-if="page == 'map'"></map-page>
-      <admin v-else-if="page == 'beheerder'"></admin>
-      <login v-else-if="page == 'login' || authorized != true"></login>
-      <adminReport v-else-if="page == 'report'"></adminReport>
       <report v-else-if="page == 'melden'"></report>
+      <map-page v-else-if="page == 'map'"></map-page>
+      <adminReport v-else-if="page == 'report'"></adminReport>
+      
+      <admin v-else-if="page == 'beheerder' && authorized == true"></admin>
+      <login v-else-if="page == 'beheerder' && authorized != true"></login>
 
       <!-- 404 page -->
       <div v-else class="flex flex-col items-center justify-center w-full h-screen ">

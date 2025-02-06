@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Http\Middleware\Authorized;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+
+
 
 function IsAuthorized(Request $request): bool
 {
@@ -37,11 +40,11 @@ Route::get('/report/{id}', function (Request $request, ?int $id = 0) {
 Route::get("/{page?}", function (Request $request, ?string $page = "home") {
     $IsAuthorized = IsAuthorized($request);
 
-    if (!$IsAuthorized && $page == "beheerder") {
-        $page = "login";
-    } else if ($IsAuthorized && $page == "login") {
-        return response()->redirectTo("beheerder");
-    }
+    // if (!$IsAuthorized && $page == "beheerder") {
+    //     $page = "login";
+    // } else if ($IsAuthorized && $page == "login") {
+    //     $page = "beheerder";
+    // };
 
     return view("main", [
         "page" => $page,
