@@ -4,15 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Cookie;
 
 define("SESSION_EXPIRE_MINUTES", 5);
 define("SESSION_EXPIRE_MINUTES_COOKIE", 60);
 
 class AdminLogin extends Controller
 {
+    public function index(Request $request)
+    {
+        $token = $request->cookie("session_token");
+
+        $data = DB::table("active_sessions")->where("token", $token);
+        $session = array();
+        $session["expire"] = time() + SESSION_EXPIRE_MINUTES * 60;
+        $data->update($session);
+
+        return response()->json($data->value("expire"));
+
+        // $data->expire = time() + SESSION_EXPIRE_MINUTES * 60;
+    }
     public function store(Request $request)
     {
 

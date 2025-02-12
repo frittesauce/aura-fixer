@@ -1,37 +1,54 @@
 <?php
 
-use App\Http\Middleware\IsAuthorized;
-use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+use App\Http\Middleware\Authorized;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
-function IsAuthorized(string $page, Request $request): bool
+
+
+function IsAuthorized(Request $request): bool
 {
-    $token = $request->cookie("session_token");
-    if (empty($token)) {
-        return false;
-    }
-
-    DB::table("active_sessions")->where("expire", "<", time())->delete();
-
-    $data = DB::table("active_sessions")->where("token", $token);
-    $user_id = $data->value("user_id");
-
-    if (empty($user_id)) {
-        return false;
-    }
-
-    return true;
+    $authorized = new Authorized();
+    return $authorized->IsAuthorized($request);
 }
 
+Route::get('/report/{id}', function (Request $request, ?int $id = 0) {
+    if (!$id) {
+        return response()->json(["error" => "No id was provided"]);
+    }
+
+    $data = DB::table("reports")->where("id", $id);
+
+    $requested = ["name", "description", "email"];
+    $values = [];
+
+    foreach ($requested as $key) {
+        $value = $data->value($key);
+        $values[$key] = $value;
+    }
+
+    return view("main", [
+        "page" => "report",
+        "authorized" => "true",
+    ]);
+})->middleware([Authorized::class]);
+
+
 Route::get("/{page?}", function (Request $request, ?string $page = "home") {
-    $IsAuthorized = IsAuthorized($page, $request);
+    $IsAuthorized = IsAuthorized($request);
+
+    // if (!$IsAuthorized && $page == "beheerder") {
+    //     $page = "login";
+    // } else if ($IsAuthorized && $page == "login") {
+    //     $page = "beheerder";
+    // };
 
     return view("main", [
         "page" => $page,
         "authorized" => $IsAuthorized ? "true" : "false",
     ]);
 });
-
 
