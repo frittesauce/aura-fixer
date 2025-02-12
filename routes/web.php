@@ -36,6 +36,12 @@ Route::get('/report/{id}', function (Request $request, ?int $id = 0) {
     ]);
 })->middleware([Authorized::class]);
 
+Route::get("/report/{id}", function (Request $request, int $id) {
+    return view("report", [
+        "id" => $id,
+    ]);
+});
+
 
 Route::get("/{page?}", function (Request $request, ?string $page = "home") {
     $IsAuthorized = IsAuthorized($request);

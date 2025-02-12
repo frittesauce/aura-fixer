@@ -12,6 +12,10 @@ async function deleteReport(id) {
     });
 }
 
+async function openReport(id) {
+    window.open(`../report/${id}`).focus();    
+}
+
 fetch("../api/reports").then(async (response) => {
     let object = await response.json();
 
@@ -37,11 +41,12 @@ fetch("../api/reports").then(async (response) => {
                     <th class="px-4 py-2 border">Description</th>
                     <th class="px-4 py-2 border">Email</th>
                     <th class="w-1 py-2 border"></th>
+                    <th class="w-1 py-2 border"></th>
                 </tr>
             </thead>
             <tbody>
                 <ReportRow v-for="(report, index) in reports" :key="index" :name="report.name" :id="report.id"
-                    :description="report.description" :email="report.email" @deleteReport="deleteReport" />
+                    :description="report.description" :email="report.email" @deleteReport="deleteReport" @openReport="openReport" />
             </tbody>
         </table>
     </div>
