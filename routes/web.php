@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Http\Middleware\Authorized;
+use App\Models\Report;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
@@ -32,13 +33,19 @@ Route::get('/report/{id}', function (Request $request, ?int $id = 0) {
 
     return view("main", [
         "page" => "report",
-        "authorized" => "true",
+        "authorized" => "true"
     ]);
 })->middleware([Authorized::class]);
 
 Route::get("/report/{id}", function (Request $request, int $id) {
+    $data = DB::table("reports")->where("id", $id);
+    $name = $data->value("name");
+    $description = $data->value("description");
+
     return view("report", [
         "id" => $id,
+        "name" => $name,
+        "description" => $description,
     ]);
 });
 
