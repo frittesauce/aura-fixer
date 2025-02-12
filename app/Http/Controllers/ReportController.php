@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class ReportController extends Controller
@@ -45,6 +46,12 @@ class ReportController extends Controller
         $report->description = $request->post('description');
         $report->latitude = $request->post('latitude');
         $report->longitude = $request->post('longitude');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time() . '.png';
+            Storage::put('public/images/' . $filename, file_get_contents($image));
+            $report->image = $filename;
+        }
         $report->save();
         return $report->all();
     }
