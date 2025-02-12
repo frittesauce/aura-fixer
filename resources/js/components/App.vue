@@ -13,7 +13,6 @@ const props = defineProps(['page', 'authorized']);
 let page = ref(props.page);
 let authorized = ref(props.authorized == true);
 
-
 if (authorized.value) {
   setInterval(async () => {
       const response = await fetch("../api/extend-token");
@@ -52,7 +51,7 @@ function updatePage(newPage) {
 
       <!-- 404 page -->
       <div v-else class="flex flex-col items-center justify-center w-full h-screen ">
-        <img src="/images/fish.png" alt="image of a cool fish" class=" w-80 h80">
+        <img src="/images/fish.png" alt="image of a cool fish" class="w-80 h80">
         <p>404 page not found :(</p>
       </div>
     </main>

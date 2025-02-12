@@ -1,10 +1,13 @@
 <script setup>
-const id = parseInt(window.location.pathname.split("/")[2]);
+import { ref } from 'vue';
 
-const response = await fetch(`../api/report/${id}`);
+const props = defineProps(['id', 'name', 'description']);
+
+let name = ref(props.name);
+console.log(name.value);
+
 </script>
 
-
 <template>
-  <label>Report</label>
+  
 </template>
