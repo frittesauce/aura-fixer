@@ -1,14 +1,11 @@
 <?php
+use Illuminate\Cookie\Middleware\EncryptCookies;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Http\Middleware\Authorized;
-use App\Models\Report;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
-
-
 
 function IsAuthorized(Request $request): bool
 {

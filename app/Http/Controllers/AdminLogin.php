@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Core\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

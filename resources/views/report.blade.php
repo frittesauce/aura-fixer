@@ -16,7 +16,7 @@
 
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
 
-    <report :id={{ $id }} :name={{ $name }} :description={{ $description }}>
+    <report :id={{ $id }} :name="'{{ $name }}'" :description="'{{ $description }}'">
 
 </body>
 
