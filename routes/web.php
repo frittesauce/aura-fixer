@@ -38,11 +38,19 @@ Route::get("/report/{id}", function (Request $request, int $id) {
     $data = DB::table("reports")->where("id", $id);
     $name = $data->value("name");
     $description = $data->value("description");
+    $email = $data->value("email");
+    $imageId = $data->value( "image");
+    $longitude = $data->value("longitude");
+    $latitude = $data->value("latitude");
 
     return view("report", [
         "id" => $id,
         "name" => $name,
         "description" => $description,
+        "email"=> $email,
+        "imageId" => $imageId,
+        "longitude" => $longitude,
+        "latitude"=> $latitude
     ]);
 });
 
