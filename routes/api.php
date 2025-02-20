@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Middleware\Authorized;
 use Illuminate\Support\Facades\DB;
+Route::resources([
+    'login' => AdminLogin::class,
+    'report' => ReportController::class,
+]);
 
 Route::get("/report/{id}", function(Request $request, ?int $id) {
     if (!$id) {
@@ -24,12 +28,9 @@ Route::get("/report/{id}", function(Request $request, ?int $id) {
     }
 
     return response()->json($values);
-})->middleware([Authorized::class]);    
+})->middleware([Authorized::class]);
 
-Route::resources([
-    'login' => AdminLogin::class,
-    'report' => ReportController::class,
-]);
+
 
 Route::resource(
     "/reports",

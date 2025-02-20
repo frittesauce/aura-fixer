@@ -13,7 +13,7 @@ class ReportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         echo json_encode(Report::all());
     }
@@ -53,7 +53,6 @@ class ReportController extends Controller
             $report->image = $filename;
         }
         $report->save();
-        return $report->all();
     }
 
     /**
