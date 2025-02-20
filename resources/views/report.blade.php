@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>aura fixer - Give the city a proper winter arc!</title>
+    <title>report {{ $id}} on aura fixer!</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
@@ -16,7 +16,7 @@
 
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
 
-    <report :id={{ $id }} :name={{ $name }} :description={{ $description }}>
+    <report :id={{ $id }} :name="'{{ $name }}'" :description="'{{ $description }}'" :email="'{{ $email }}'" :imageId="'{{$imageId}}'" :latitude="'{{$latitude}}'" :longitude="'{{$longitude}}'">
 
 </body>
 

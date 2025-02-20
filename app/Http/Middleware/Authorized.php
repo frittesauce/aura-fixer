@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 
-
-
 class Authorized
 {
     public function IsAuthorized(Request $request): bool
