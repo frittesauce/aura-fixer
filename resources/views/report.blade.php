@@ -16,7 +16,7 @@
 
 <body id="app" class="flex flex-col overflow-y-hidden h-dvh">
 
-    <report :id={{ $id }} :name="'{{ $name }}'" :description="'{{ $description }}'" :email="'{{ $email }}'" :imageId="'{{$imageId}}'" :latitude="'{{$latitude}}'" :longitude="'{{$longitude}}'">
+    <report :id={{ $id }} :name="'{{ $name }}'" :description="'{{ $description }}'" :email="'{{ $email }}'" :image="'{{ $image }}'" :latitude="'{{$latitude}}'" :longitude="'{{$longitude}}'">
 
 </body>
 

@@ -30,7 +30,9 @@ onMounted(() => {
   let streaming = true;
 
   navigator.mediaDevices.getUserMedia({
-    video: true,
+    video: {
+        facingMode: "environment"
+    },
     audio: false
   })
     .then(function (stream) {
