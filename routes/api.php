@@ -30,6 +30,10 @@ Route::get("/report/{id}", function(Request $request, ?int $id) {
     return response()->json($values);
 })->middleware([Authorized::class]);
 
+Route::get("/image/{id}", function(Request $request, ?string $id) {
+    return response()->file(storage_path()."/app/private/public/images/" . $id);
+});
+
 
 
 Route::resource(

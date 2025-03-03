@@ -39,7 +39,7 @@ Route::get("/report/{id}", function (Request $request, int $id) {
     $name = $data->value("name");
     $description = $data->value("description");
     $email = $data->value("email");
-    $imageId = $data->value( "image");
+    $image = $data->value( "image");
     $longitude = $data->value("longitude");
     $latitude = $data->value("latitude");
 
@@ -48,7 +48,7 @@ Route::get("/report/{id}", function (Request $request, int $id) {
         "name" => $name,
         "description" => $description,
         "email"=> $email,
-        "imageId" => $imageId,
+        "image" => $image,
         "longitude" => $longitude,
         "latitude"=> $latitude
     ]);
